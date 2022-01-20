@@ -22,15 +22,31 @@ class tamagotchi {
         
     }
     func read() {
-        if intelligence == 100{
-            print("you are too smart! go outside!")
-        } else {
-            intelligence += Int.random(in: 1...5)
+    
+        intelligence += 5
+        if intelligence > 100 {
+            intelligence = 100
         }
+        
     }
     func eat() {
-        hunger +=
+        hunger += 1
+        if hunger > 10 {
+            hunger  = 10
+        }
     }
-    
+    func playGame() {
+        boredom -= 1
+        if boredom < 0 {
+            boredom = 0
+        }
+    }
+    func displayStats() -> String{
+        return ("""
+            Hunger: \(self.hunger)
+            intelligence: \(self.intelligence)
+            Boredom : \(self.boredom)
+            """)
+    }
     
 }
