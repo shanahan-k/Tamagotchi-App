@@ -8,21 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var tamagotchiObject = tamagotchi(hunger: 5,boredom: 5,name: "mark",intelligence: 5)
+    @StateObject var tamagotchiObject = tamagotchi(name: "Mark",isMale: true)
     var body: some View {
-        VStack {
-        Spacer()
-        HStack {
-        Form{
+        VStack(alignment: .leading,spacing: 20) {
             Section {
-                Text(tamagotchiObject.displayStats())
-                .padding()
+                HStack {
+                    Text("Name: \(tamagotchiObject.name)\nFeeling: \(tamagotchiObject.getFeeling())").padding()
+                    Spacer()
+                    Text("Gender: \(tamagotchiObject.getGender())").padding()
+                }
             }
+            Spacer()
+            Form {
+                Text(tamagotchiObject.displayStats())
+                    .padding()
+                Button("Give Snack",action: { tamagotchiObject.eatSnack()}
+                )
+                Button("Give Meal", action: {tamagotchiObject.eatMeal()})
+                Button("Play Game", action:{tamagotchiObject.playGame()})
+                Button("Read",action: {tamagotchiObject.read()})
+                Button("Go to the Bathroom",action:{tamagotchiObject.goBathroom()} )
+            }
+            
         }
-        }
     }
-    }
-    }
+}
 
 
 struct ContentView_Previews: PreviewProvider {
