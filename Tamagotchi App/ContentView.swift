@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var tamagotchiObject = tamagotchi(name: "Mark",isMale: true)
     var body: some View {
-        VStack(alignment: .leading,spacing: 20) {
+        VStack(alignment: .leading) {
             Section {
                 HStack {
                     Text("Name: \(tamagotchiObject.name)\nFeeling: \(tamagotchiObject.getFeeling())").padding()
@@ -18,7 +18,11 @@ struct ContentView: View {
                     Text("Gender: \(tamagotchiObject.getGender())").padding()
                 }
             }
-            Spacer()
+            
+            
+            Image("Space Background").resizable().padding().scaledToFit()
+            
+            
             Form {
                 Text(tamagotchiObject.displayStats())
                     .padding()
@@ -29,6 +33,7 @@ struct ContentView: View {
                 Button("Read",action: {tamagotchiObject.read()})
                 Button("Go to the Bathroom",action:{tamagotchiObject.goBathroom()} )
             }
+            
             
         }
     }

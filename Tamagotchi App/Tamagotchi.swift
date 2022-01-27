@@ -32,6 +32,10 @@ class tamagotchi: ObservableObject {
         if self.intelligence > 100 {
             self.intelligence = 100
         }
+        let rand = Int.random(in: 0...10)
+        if rand == 3 {
+            self.boredom += 2
+        }
         
     }
     func getGender() ->String {
